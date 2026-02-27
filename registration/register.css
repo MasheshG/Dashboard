@@ -1,0 +1,114 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Page background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(rgb(244, 233, 166),rgb(245, 201, 160),rgb(235, 142, 142));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form card */
+form {
+    width: 380px;
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+form h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* Form groups */
+form > div {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #000;
+}
+
+/* Error text */
+.error {
+    font-size: 12px;
+    color: red;
+}
+
+/* Buttons container */
+form div:last-of-type {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Buttons */
+button {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+button:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Cancel button optional lighter look */
+button[type="reset"] {
+    background: #000;
+}
+
+/* Login link */
+form a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Bottom text */
+form div:last-child {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}

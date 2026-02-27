@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jspider institute</title>
+    <link rel="stylesheet" href="../homepage/homepage.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Jspider</h2>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="courses">
+                <span class="icon">📚</span>
+                <span>Courses</span>
+            </a>
+            <a href="#" class="nav-item" data-section="students">
+                <span class="icon">👥</span>
+                <span>Students</span>
+            </a>
+            <a href="#" class="nav-item" data-section="schedule">
+                <span class="icon">🕐</span>
+                <span>Schedule</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <h1 id="page-title">Jspider Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn-primary" id="add-student-btn">+ Add Student</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="content-section active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card" style="border-left-color: #000000;">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #628be3 100%);">
+                        <span>👨‍🎓</span>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Students</p>
+                        <h3 class="stat-value" id="total-students">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card" style="border-left-color: #000000;">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <span>✅</span>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Placed</p>
+                        <h3 class="stat-value" id="placed-students">0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card" style="border-left-color: #000000;">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <span>📖</span>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">In Training</p>
+                        <h3 class="stat-value" id="training-students">0</h3>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="section-header">
+                <h2>Courses Overview</h2>
+            </div>
+            <div class="courses-grid" id="courses-grid">
+                <!-- Courses will be dynamically loaded -->
+            </div>
+
+            <!-- Time Slots Overview -->
+            <div class="section-header">
+                <h2>Schedule by Time</h2>
+            </div>
+            <div class="time-slots-grid" id="time-slots-grid">
+                <!-- Time slots will be dynamically loaded -->
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses-section" class="content-section">
+            <div class="courses-detail-grid" id="courses-detail-grid">
+                <!-- Detailed course cards will be loaded -->
+            </div>
+        </section>
+
+        <!-- Students Section -->
+        <section id="students-section" class="content-section">
+            <div class="table-container">
+                <table class="students-table" id="students-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Time Slot</th>
+                            <th>Status</th>
+                            <th>Enrolled Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody">
+                        <!-- Students will be dynamically loaded -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule-section" class="content-section">
+            <div class="schedule-container">
+                <div class="schedule-card">
+                    <h3>Morning Batch</h3>
+                    <p class="time-range">8:00 AM - 12:00 PM</p>
+                    <div class="schedule-stats">
+                        <div class="schedule-stat">
+                            <span>Students:</span>
+                            <strong id="morning-count">0</strong>
+                        </div>
+                    </div>
+                    <div id="morning-students" class="student-list"></div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Afternoon Batch</h3>
+                    <p class="time-range">12:00 PM - 4:00 PM</p>
+                    <div class="schedule-stats">
+                        <div class="schedule-stat">
+                            <span>Students:</span>
+                            <strong id="afternoon-count">0</strong>
+                        </div>
+                    </div>
+                    <div id="afternoon-students" class="student-list"></div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>Evening Batch</h3>
+                    <p class="time-range">4:00 PM - 8:00 PM</p>
+                    <div class="schedule-stats">
+                        <div class="schedule-stat">
+                            <span>Students:</span>
+                            <strong id="evening-count">0</strong>
+                        </div>
+                    </div>
+                    <div id="evening-students" class="student-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add/Edit Student Modal -->
+    <div id="student-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add New Student</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-name">Student Name</label>
+                    <input type="text" id="student-name" required placeholder="Enter student name">
+                </div>
+
+                <div class="form-group">
+                    <label for="student-course">Course</label>
+                    <select id="student-course" required>
+                        <option value="">Select Course</option>
+                        <option value="Fullstack">Fullstack Development</option>
+                        <option value="Java">Java Development</option>
+                        <option value="MERN">MERN Stack</option>
+                        <option value="DevOps">DevOps</option>
+                    </select>
+                </div>
+                   <div class="form-group">
+                     <label for="student-date">Joining Date</label>
+                           <input type="date" id="student-date" required>
+                     </div>
+                <div class="form-group">
+                    <label for="student-time">Time Slot</label>
+                    <select id="student-time" required>
+                        <option value="">Select Time Slot</option>
+                        <option value="Morning">Morning (8:00 AM - 12:00 PM)</option>
+                        <option value="Afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                        <option value="Evening">Evening (4:00 PM - 8:00 PM)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="student-status">Status</label>
+                    <select id="student-status" required>
+                        <option value="In Training">In Training</option>
+                        <option value="Placed">Placed</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-btn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="submit-btn">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../homepage/homepage.js"></script>
+</body>
+</html>
